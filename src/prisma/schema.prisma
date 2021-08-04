@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model task {
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(100)
+  time_start  DateTime @db.Timestamp(6)
+  time_finish DateTime @db.Timestamp(6)
+}
+
+model FinishedTask {
+  @@map(name: "finished_tasks")
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(100)
+  time_start  DateTime @db.Timestamp(6)
+  time_finish DateTime @db.Timestamp(6)
+}
+
+model TrackedTask {
+  @@map(name: "tracked_task")
+  id         Int      @id @default(0)
+  name       String   @db.VarChar(100)
+  time_start DateTime @db.Timestamp(6)
+}
