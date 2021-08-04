@@ -1,0 +1,25 @@
+{
+  "name": "task-time-tracker-api",
+  "version": "1.0.0",
+  "description": "NodeJS TypeScript API that allows user to track time regarding certain defined task.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node build/index.js",
+    "dev": "nodemon src/index.ts",
+    "build": "tsc -p .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "task",
+    "time",
+    "tracking",
+    "api"
+  ],
+  "author": "dotanek Mateusz Książek",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^16.4.11",
+    "nodemon": "^2.0.12",
+    "typescript": "^4.3.5"
+  }
+}
