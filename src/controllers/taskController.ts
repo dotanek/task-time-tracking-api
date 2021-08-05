@@ -68,10 +68,12 @@ const stop = async (req: Request, res: Response, next: NextFunction) => {
       time_finish: new Date(Date.now()).toISOString(),
     };
 
-    const [resDelTracked, resCreFinished] = await prisma.$transaction([
-      prisma.trackedTask.delete({ where: { id: 0 } }),
-      prisma.finishedTask.create({ data: finishedTask }),
-    ]);
+    const resCreFinished = (
+      await prisma.$transaction([
+        prisma.trackedTask.delete({ where: { id: 0 } }),
+        prisma.finishedTask.create({ data: finishedTask }),
+      ])
+    )[1];
 
     res.json(resCreFinished);
   } catch (err) {
