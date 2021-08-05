@@ -140,4 +140,5 @@ create table finished_tasks (
 ## Demo
 
 The application hosted from this exact repository can be found [here](http://task-time-tracker-api.herokuapp.com).
+
 <sub>Feel free to make some requests!</sub>

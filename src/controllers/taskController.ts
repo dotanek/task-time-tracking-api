@@ -88,8 +88,13 @@ const fetchFinished = async (
   res: Response,
   next: NextFunction
 ) => {
-  const result = await prisma.finishedTask.findMany();
-  res.json(result);
+  try {
+    const result = await prisma.finishedTask.findMany();
+    res.json(result);
+  } catch (err) {
+    console.log(err);
+    return next(new ResponseError("Database error.", 500));
+  }
 };
 
 /** Fetches currently tracked task. */
@@ -98,14 +103,19 @@ const fetchTracked = async (
   res: Response,
   next: NextFunction
 ) => {
-  const result = await prisma.trackedTask.findFirst();
+  try {
+    const result = await prisma.trackedTask.findFirst();
 
-  /* If the result is null then no task is currently being tracked. */
-  if (!result) {
-    return res.status(200).json({ message: "No task is being tracked." });
+    /* If the result is null then no task is currently being tracked. */
+    if (!result) {
+      return res.status(200).json({ message: "No task is being tracked." });
+    }
+
+    res.json(result);
+  } catch (err) {
+    console.log(err);
+    return next(new ResponseError("Database error.", 500));
   }
-
-  res.json(result);
 };
 
 export default {
