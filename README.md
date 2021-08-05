@@ -4,6 +4,10 @@ NodeJS TypeScript API that allows user to track time regarding certain defined t
 
 ### Setup
 
-## Environment
+## Requirements
 
-NodeJS version 14, ts-node version 10
+NodeJS version 14
+
+ts-node version 10
+
+typescript

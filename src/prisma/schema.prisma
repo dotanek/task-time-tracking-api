@@ -15,16 +15,18 @@ model task {
 }
 
 model FinishedTask {
-  @@map(name: "finished_tasks")
   id          Int      @id @default(autoincrement())
   name        String   @db.VarChar(100)
   time_start  DateTime @db.Timestamp(6)
   time_finish DateTime @db.Timestamp(6)
+
+  @@map("finished_tasks")
 }
 
 model TrackedTask {
-  @@map(name: "tracked_task")
-  id         Int      @id @default(0)
-  name       String   @db.VarChar(100)
+  id        Int      @id @default(0)
+  name      String   @db.VarChar(100)
   time_start DateTime @db.Timestamp(6)
+
+  @@map("tracked_task")
 }
